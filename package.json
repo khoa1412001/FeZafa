@@ -1,6 +1,7 @@
 {
   "name": "fezafa",
   "version": "0.1.0",
+  "proxy": "https://be-zafa.vercel.app/api/",
   "private": true,
   "dependencies": {
     "@chakra-ui/react": "^2.4.1",
