@@ -13,7 +13,7 @@ const Signup = () => {
   const toast = useToast();
   const navigate = useNavigate();
 
-  const [name, setName] = useState();
+  const [username, setUsername] = useState();
   const [email, setEmail] = useState();
   const [confirmpassword, setConfirmpassword] = useState();
   const [password, setPassword] = useState();
@@ -22,7 +22,7 @@ const Signup = () => {
 
   const submitHandler = async () => {
     setPicLoading(true);
-    if (!name || !email || !password || !confirmpassword) {
+    if (!username || !email || !password || !confirmpassword) {
       toast({
         title: "Vui lòng điền hết thông tin vào các trường",
         status: "warning",
@@ -52,7 +52,7 @@ const Signup = () => {
       const { data } = await axios.post(
         "/auth/register",
         {
-          name,
+          username,
           email,
           password,
           avatar,
@@ -129,11 +129,11 @@ const Signup = () => {
 
   return (
     <VStack spacing="5px">
-      <FormControl id="first-name" isRequired>
+      <FormControl id="first-username" isRequired>
         <FormLabel>Tên</FormLabel>
         <Input
           placeholder="Enter Your Name"
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => setUsername(e.target.value)}
         />
       </FormControl>
       <FormControl id="email" isRequired>

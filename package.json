@@ -1,9 +1,10 @@
 {
   "name": "fezafa",
   "version": "0.1.0",
-  "proxy": "https://be-zafa.vercel.app/api/",
+  "proxy": "http://localhost:5000/api/",
   "private": true,
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.13",
     "@chakra-ui/react": "^2.4.1",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
