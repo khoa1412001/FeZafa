@@ -31,7 +31,6 @@ const Login = () => {
       return;
     }
 
-    // console.log(email, password);
     try {
       const config = {
         headers: {
@@ -39,15 +38,11 @@ const Login = () => {
         },
       };
 
-      const { data } = await axios.post(
-        "/auth/login",
-        { username, password },
-        config
-      );
+      const { data } = await axios.post("/auth/login", { username, password }, config);
 
       // console.log(JSON.stringify(data));
       toast({
-        title: "Login Successful",
+        title: "Đăng nhập thành công",
         status: "success",
         duration: 5000,
         isClosable: true,
@@ -59,7 +54,7 @@ const Login = () => {
       navigate("/chats");
     } catch (error) {
       toast({
-        title: "Error Occured!",
+        title: "Lỗi hệ thống!",
         description: error.response.data.message,
         status: "error",
         duration: 5000,
@@ -73,11 +68,11 @@ const Login = () => {
   return (
     <VStack spacing="10px">
       <FormControl id="email" isRequired>
-        <FormLabel>Email</FormLabel>
+        <FormLabel>Tên tài khoản</FormLabel>
         <Input
           value={username}
           type="email"
-          placeholder="Nhập email"
+          placeholder="Nhập tên tài khoản"
           onChange={(e) => setUsername(e.target.value)}
         />
       </FormControl>

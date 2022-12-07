@@ -55,10 +55,10 @@ const GroupChatModal = ({ children }) => {
       setLoading(true);
       const config = {
         headers: {
-          Authorization: `Bearer ${user.token}`,
+          Authorization: `Bearer ${user.accessToken}`,
         },
       };
-      const { data } = await axios.get(`/api/user?search=${search}`, config);
+      const { data } = await axios.get(`/user?search=${search}`, config);
       console.log(data);
       setLoading(false);
       setSearchResult(data);
@@ -97,7 +97,7 @@ const GroupChatModal = ({ children }) => {
         },
       };
       const { data } = await axios.post(
-        `/api/chat/group`,
+        `/chat/group`,
         {
           name: groupChatName,
           users: JSON.stringify(selectedUsers.map((u) => u._id)),
@@ -132,12 +132,7 @@ const GroupChatModal = ({ children }) => {
       <Modal onClose={onClose} isOpen={isOpen} isCentered>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader
-            fontSize="35px"
-            fontFamily="Work sans"
-            d="flex"
-            justifyContent="center"
-          >
+          <ModalHeader fontSize="35px" fontFamily="Work sans" d="flex" justifyContent="center">
             Create Group Chat
           </ModalHeader>
           <ModalCloseButton />
@@ -158,11 +153,7 @@ const GroupChatModal = ({ children }) => {
             </FormControl>
             <Box w="100%" d="flex" flexWrap="wrap">
               {selectedUsers.map((u) => (
-                <UserBadgeItem
-                  key={u._id}
-                  user={u}
-                  handleFunction={() => handleDelete(u)}
-                />
+                <UserBadgeItem key={u._id} user={u} handleFunction={() => handleDelete(u)} />
               ))}
             </Box>
             {loading ? (
