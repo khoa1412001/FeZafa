@@ -25,7 +25,7 @@ const MyChats = ({ fetchAgain }) => {
         },
       };
 
-      const { data } = await axios.get("/api/chat", config);
+      const { data } = await axios.get("/chat", config);
       setChats(data);
     } catch (error) {
       toast({
@@ -88,6 +88,7 @@ const MyChats = ({ fetchAgain }) => {
       >
         {chats ? (
           <Stack overflowY="scroll">
+            {console.log("this is chats", chats)}
             {chats.map((chat) => (
               <Box
                 onClick={() => setSelectedChat(chat)}
