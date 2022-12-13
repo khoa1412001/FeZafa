@@ -42,13 +42,13 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     try {
       const config = {
         headers: {
-          Authorization: `Bearer ${user.accessToken}`,
+          Authorization: `Bearer ${user.token}`,
         },
       };
 
       setLoading(true);
 
-      const { data } = await axios.get(`/message/${selectedChat._id}`, config);
+      const { data } = await axios.get(`/api/message/${selectedChat._id}`, config);
       setMessages(data);
       setLoading(false);
 
@@ -71,13 +71,13 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       try {
         const config = {
           headers: {
-            "Content-type": "application/json",
-            Authorization: `Bearer ${user.accessToken}`,
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
           },
         };
         setNewMessage("");
         const { data } = await axios.post(
-          "/message",
+          "/api/message",
           {
             content: newMessage,
             chatId: selectedChat,
@@ -105,23 +105,26 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     socket.on("connected", () => setSocketConnected(true));
     socket.on("typing", () => setIsTyping(true));
     socket.on("stop typing", () => setIsTyping(false));
+
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
     fetchMessages();
 
     selectedChatCompare = selectedChat;
+    // eslint-disable-next-line
   }, [selectedChat]);
 
   useEffect(() => {
-    socket.on("message recieved", (newMessageRecieved) => {
-      if (!selectedChatCompare || selectedChatCompare._id !== newMessageRecieved.chat._id) {
-        if (!notification.includes(newMessageRecieved)) {
-          setNotification([newMessageRecieved, ...notification]);
+    socket.on("message received", (newMessageReceived) => {
+      if (!selectedChatCompare || selectedChatCompare._id !== newMessageReceived.chat._id) {
+        if (!notification.includes(newMessageReceived)) {
+          setNotification([newMessageReceived, ...notification]);
           setFetchAgain(!fetchAgain);
         }
       } else {
-        setMessages([...messages, newMessageRecieved]);
+        setMessages([...messages, newMessageReceived]);
       }
     });
   });

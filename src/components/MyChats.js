@@ -21,11 +21,11 @@ const MyChats = ({ fetchAgain }) => {
     try {
       const config = {
         headers: {
-          Authorization: `Bearer ${user.accessToken}`,
+          Authorization: `Bearer ${user.token}`,
         },
       };
 
-      const { data } = await axios.get("/chat", config);
+      const { data } = await axios.get("/api/chat", config);
       setChats(data);
     } catch (error) {
       toast({

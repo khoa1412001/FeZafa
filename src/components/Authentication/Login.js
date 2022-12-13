@@ -38,7 +38,7 @@ const Login = () => {
         },
       };
 
-      const { data } = await axios.post("/auth/login", { username, password }, config);
+      const { data } = await axios.post("/api/auth/login", { username, password }, config);
 
       // console.log(JSON.stringify(data));
       toast({
@@ -51,7 +51,8 @@ const Login = () => {
       localStorage.setItem("userInfo", JSON.stringify(data));
       console.log(data);
       setLoading(false);
-      navigate("/chats");
+      navigate("/chat");
+
     } catch (error) {
       toast({
         title: "Lỗi hệ thống!",

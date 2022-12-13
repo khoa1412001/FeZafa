@@ -50,7 +50,7 @@ const Signup = () => {
         },
       };
       const { data } = await axios.post(
-        "/auth/register",
+        "/api/auth/register",
         {
           username,
           email,
@@ -67,9 +67,9 @@ const Signup = () => {
         isClosable: true,
         position: "bottom",
       });
-      // localStorage.setItem("userInfo", JSON.stringify(data));
+       localStorage.setItem("userInfo", JSON.stringify(data));
       setPicLoading(false);
-      // navigate("/chats");
+       navigate("/chats");
     } catch (error) {
       toast({
         title: "Error Occured!",
