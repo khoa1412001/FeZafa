@@ -50,7 +50,7 @@ const Signup = () => {
         },
       };
       const { data } = await axios.post(
-        "/auth/register",
+        "/api/auth/register",
         {
           username,
           email,

@@ -17,15 +17,15 @@ const MyChats = ({ fetchAgain }) => {
   const toast = useToast();
 
   const fetchChats = async () => {
-    console.log(user._id);
+    console.log(user.id);
     try {
       const config = {
         headers: {
-          Authorization: `Bearer ${user.accessToken}`,
+          Authorization: `Bearer ${user.token}`,
         },
       };
 
-      const { data } = await axios.get("/chat", config);
+      const { data } = await axios.get("/api/chat", config);
       setChats(data);
     } catch (error) {
       toast({
@@ -41,7 +41,9 @@ const MyChats = ({ fetchAgain }) => {
 
   useEffect(() => {
     setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
+    console.log(JSON.parse(localStorage.getItem("userInfo")))
     fetchChats();
+    // eslint-disable-next-line
   }, [fetchAgain]);
 
   return (
@@ -103,7 +105,7 @@ const MyChats = ({ fetchAgain }) => {
                 <Text>{!chat.isGroupChat ? getSender(loggedUser, chat.users) : chat.name}</Text>
                 {chat.latestMessage && (
                   <Text fontSize="xs">
-                    <b>{chat.latestMessage.sender.username} : </b>
+                    <b>{chat.latestMessage.sender.fullname} : </b>
                     {chat.latestMessage.content.length > 50
                       ? chat.latestMessage.content.substring(0, 51) + "..."
                       : chat.latestMessage.content}

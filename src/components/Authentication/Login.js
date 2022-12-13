@@ -38,7 +38,7 @@ const Login = () => {
         },
       };
 
-      const { data } = await axios.post("/auth/login", { username, password }, config);
+      const { data } = await axios.post("/api/auth/login", { username, password }, config);
 
       // console.log(JSON.stringify(data));
       toast({

@@ -57,10 +57,10 @@ const SideDrawer = () => {
       setLoading(true);
       const config = {
         headers: {
-          Authorization: `Bearer ${user.accessToken}`,
+          Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.get(`/user/?search=${search}`, config);
+      const { data } = await axios.get(`/api/user/?search=${search}`, config);
       setLoading(false);
       setSearchResult(data);
     } catch (error) {
@@ -81,10 +81,10 @@ const SideDrawer = () => {
       const config = {
         headers: {
           "Content-type": "application/json",
-          Authorization: `Bearer ${user.accessToken}`,
+          Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.post("/chat", { userId }, config);
+      const { data } = await axios.post("/api/chat", { userId }, config);
 
       if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
       console.log(data);
