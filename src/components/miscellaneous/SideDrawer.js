@@ -1,7 +1,6 @@
 import {
   Stack,
   Button,
-  IconButton,
   Menu,
   MenuButton,
   Text,
@@ -24,11 +23,11 @@ import {
 import { BellIcon, ChevronDownIcon, SearchIcon } from "@chakra-ui/icons";
 import React, { useState } from "react";
 import { ChatState } from "../../Context/ChatProvider";
-import ProfileModal from "./ProfileModal";
 import { useNavigate } from "react-router";
 import ChatLoading from "../ChatLoading";
 import UserListItem from "../userAvatar/UserListItem";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const SideDrawer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -119,7 +118,9 @@ const SideDrawer = () => {
             Tìm người dùng
           </Button>
         </Tooltip>
+        <Link to={'/chats'}>
         <Text fontSize="3xl">Zafa</Text>
+        </Link>
         <Box>
           <Menu>
             <MenuButton p={1}>
@@ -131,9 +132,9 @@ const SideDrawer = () => {
               <Avatar size="sm" cursor="pointer" name={user.name} src={user.avatar} />
             </MenuButton>
             <MenuList>
-              <ProfileModal user={user}>
+              <Link to={'/profile'}>
                 <MenuItem>Hồ sơ của tôi</MenuItem>
-              </ProfileModal>
+              </Link>
               <MenuDivider />
               <MenuItem onClick={logoutHandle}>Đăng xuất</MenuItem>
             </MenuList>
