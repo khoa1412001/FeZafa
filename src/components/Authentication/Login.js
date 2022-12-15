@@ -54,8 +54,7 @@ const Login = () => {
       navigate("/chats");
     } catch (error) {
       toast({
-        title: "Lỗi hệ thống!",
-        description: error.response.data.message,
+        title: error?.response?.data?.message || 'Lỗi hệ thống',
         status: "error",
         duration: 5000,
         isClosable: true,
