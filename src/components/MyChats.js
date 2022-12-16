@@ -67,14 +67,14 @@ const MyChats = ({ fetchAgain }) => {
         justifyContent="space-between"
         alignItems="center"
       >
-        Chat
+        Danh sách tin nhắn
         <GroupChatModal>
           <Button
             display="flex"
-            fontSize={{ base: "17px", md: "10px", lg: "17px" }}
+            fontSize={{ base: "12px", md: "10px", lg: "12px" }}
             rightIcon={<AddIcon />}
           >
-            Tạo nhóm
+            Tạo nhóm chat
           </Button>
         </GroupChatModal>
       </Box>

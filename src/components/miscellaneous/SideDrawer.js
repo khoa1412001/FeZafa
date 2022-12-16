@@ -113,13 +113,13 @@ const SideDrawer = () => {
         p="5px 10px 5px 10px"
         borderWidth="5px"
       >
-        <Tooltip label="Tìm kiếm người dùng" hasArrow placement="bottom-end">
+        <Tooltip label="Tìm người dùng" hasArrow placement="bottom-end">
           <Button leftIcon={<SearchIcon />} variant="solid" onClick={onOpen}>
             Tìm người dùng
           </Button>
         </Tooltip>
         <Link to={'/chats'}>
-        <Text fontSize="3xl">Zafa</Text>
+        <Text fontSize="3xl">Zafa chat room</Text>
         </Link>
         <Box>
           <Menu>
@@ -148,7 +148,7 @@ const SideDrawer = () => {
           <DrawerBody>
             <Box display="flex" pb={2}>
               <Input
-                placeholder="Tìm người dùng bằng email hoặc tên"
+                placeholder="Tên,Username, Email"
                 mr={2}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}

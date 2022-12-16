@@ -36,7 +36,7 @@ function Homepage() {
       >
         <Center>
           <Text fontSize="4xl" fontFamily="Work sans" color="blue.500">
-            Zafa
+            Zafa chat room
           </Text>
         </Center>
       </Box>
